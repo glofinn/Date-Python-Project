@@ -1,5 +1,8 @@
-from sqlalchemy import PrimaryKeyConstraint, Column, String, Integer, ForeignKey
+from sqlalchemy import PrimaryKeyConstraint, Column, String, Integer, ForeignKey, DateTime, Boolean
+from datetime import datetime
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
 Base = declarative_base()
 
@@ -62,6 +65,26 @@ class User_Location(Base):
         return f"Location(id={self.id}, " + \
             f"borough={self.borough}, "
     
+
+class Matches(Base):
+
+    __tablename__ = 'matches'
+    match_id = Column(Integer, primary_key=True)
+    user1=Column(Integer())
+    user2=Column(Integer())
+    date_matched = Column(DateTime, default=datetime.now())
+    Met = Column(Boolean, default=False)
+
+    def __repr__(self):
+        return f"Matches"
+
+
+if __name__ == '__main__':
+    engine = create_engine('sqlite:///users.db')
+    Base.metadata.create_all(engine)
+    
+    Session=sessionmaker(bind=engine)
+    session = Session()
 
 
 
