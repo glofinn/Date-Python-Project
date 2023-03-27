@@ -1,20 +1,10 @@
 from sqlalchemy import PrimaryKeyConstraint, Column, String, Integer, ForeignKey, DateTime, Boolean
 from datetime import datetime
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
 
 Base = declarative_base()
 
 class User(Base):
-
-    def __init__(self, first_name, last_name, password):
-        self.id = None
-        self.first_name = first_name
-        self.last_name = last_name
-        self.password = password
-        pass
-
 
     __tablename__ = 'users'
     id = Column(Integer(), primary_key=True)
@@ -32,16 +22,16 @@ class User(Base):
 class User_Attributes(Base):
 
 
-
     __tablename__ = 'attributes'
     id = Column(Integer, primary_key=True)
     interests = Column(String(), nullable=False)
     age = Column(Integer(), nullable=False)
     height = Column(Integer())
     astrology = Column(String(),)
-    drinking = Column()
-    smoking = Column()
+    drinking = Column(Boolean(), default=False)
+    smoking = Column(Boolean(), default=False)
     relationship = Column(String(),)
+    passport = Column(String(), nullable=False)
     user_id = Column(Integer(), ForeignKey('users.id'))
 
     def __repr__(self):
@@ -53,17 +43,22 @@ class User_Attributes(Base):
             f"drinking={self.drinking}, " + \
             f"smoking={self.smoking}, " + \
             f"relationship={self.relationship}, " + \
+            f"passport={self.passport}, " + \
             f"userID={self.user_id}, "
         
 class User_Location(Base):
 
     __tablename__ = 'location'
     id = Column(Integer, primary_key=True)
-    borough = Column(String(), nullable=False)
+    zipcode = Column(Integer(),)
+    location_pref = Column(Integer(), nullable=False)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+
 
     def __repr__(self):
         return f"Location(id={self.id}, " + \
-            f"borough={self.borough}, "
+            f""
+            
     
 
 class Matches(Base):
@@ -79,12 +74,7 @@ class Matches(Base):
         return f"Matches"
 
 
-if __name__ == '__main__':
-    engine = create_engine('sqlite:///users.db')
-    Base.metadata.create_all(engine)
-    
-    Session=sessionmaker(bind=engine)
-    session = Session()
+
 
 
 
