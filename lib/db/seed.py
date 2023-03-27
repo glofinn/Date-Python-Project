@@ -498,10 +498,155 @@ kat_location = User_Location(
     user_id = 1
 )
 
+
+jamesbond_location = User_Location(
+    zipcode=10016,
+    location_pref=18,
+    user_id=3
+)
+
+edd_location = User_Location(
+    zipcode=10005,
+    location_pref=12,
+    user_id=4
+)
+
+eddy_location = User_Location(
+    zipcode=10012,
+    location_pref=14,
+    user_id=5
+)
+
+josh_location = User_Location(
+    zipcode=10030,
+    location_pref=15,
+    user_id=6
+)
+
 nick_location = User_Location(
     zipcode=10003,
     location_pref=1,
     user_id=7
+)
+
+craig_location = User_Location(
+    zipcode=11101,
+    location_pref=20,
+    user_id=8
+)
+
+eric_location = User_Location(
+    zipcode=11354,
+    location_pref=20,
+    user_id=9
+)
+
+clyde_location = User_Location(
+    zipcode=11420,
+    location_pref=20,
+    user_id=10
+)
+
+wendy_location = User_Location(
+    zipcode=11377,
+    location_pref=20,
+    user_id=11
+)
+
+bebe_location = User_Location(
+    zipcode=11692,
+    location_pref=20,
+    user_id=12
+)
+
+julie_location = User_Location(
+    zipcode=11238,
+    location_pref=20,
+    user_id=13
+)
+
+bot_location = User_Location(
+    zipcode=11242,
+    location_pref=20,
+    user_id=14
+)
+
+ronald_location = User_Location(
+    zipcode=11201,
+    location_pref=7,
+    user_id=15
+)
+
+tony_location = User_Location(
+    zipcode=11203,
+    location_pref=4,
+    user_id=16
+)
+
+meadow_location = User_Location(
+    zipcode=11204,
+    location_pref=5,
+    user_id=17
+)
+
+christopher_location = User_Location(
+    zipcode=10152,
+    location_pref=9,
+    user_id=18
+)
+
+jack_location = User_Location(
+    zipcode=10165,
+    location_pref=5,
+    user_id=19
+)
+
+beyonce_location = User_Location(
+    zipcode=10278,
+    location_pref=3,
+    user_id=20
+)
+
+barbara_location = User_Location(
+    zipcode=10460,
+    location_pref=11,
+    user_id=21
+)
+
+sally_location = User_Location(
+    zipcode=10465,
+    location_pref=2,
+    user_id=22
+)
+
+harold_location = User_Location(
+    zipcode=10455,
+    location_pref=15,
+    user_id=23
+)
+
+dusty_location = User_Location(
+    zipcode=11432,
+    location_pref=5,
+    user_id=24
+)
+
+orlando_location = User_Location(
+    zipcode=11374,
+    location_pref=8,
+    user_id=25
+)
+
+jessica_location = User_Location(
+    zipcode=11697,
+    location_pref=9,
+    user_id=26
+)
+
+nancy_location = User_Location(
+    zipcode=10153,
+    location_pref=2,
+    user_id=27
 )
     
 def delete_data():
