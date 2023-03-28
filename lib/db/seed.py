@@ -1,4 +1,5 @@
 from models import *
+# from account_cli import *
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -660,10 +661,28 @@ def delete_data():
 if __name__ == '__main__':
     delete_data()
 
-session.bulk_save_objects(users_list)
-session.bulk_save_objects(attributes_list)
-session.bulk_save_objects(location_list)
-session.commit()
+    for user in users_list:
+        existing_user = session.query(User).filter_by(first_name=user.first_name, last_name=user.last_name).first()
+        if not existing_user:
+            session.add(user)
+    session.commit()
+
+    for attribute in attributes_list:
+        session.add(attribute)
+    session.commit()
+
+    for location in location_list:
+        session.add(location)
+    session.commit()
+
+    # for match in matches_list:
+    #     session.add(match)
+    # session.commit()
+
+# session.bulk_save_objects(users_list)
+# session.bulk_save_objects(attributes_list)
+# session.bulk_save_objects(location_list)
+# session.commit()
 
 
 

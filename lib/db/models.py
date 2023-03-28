@@ -1,8 +1,7 @@
 from sqlalchemy import PrimaryKeyConstraint, Column, String, Integer, ForeignKey, DateTime, Boolean
 from datetime import datetime
 from sqlalchemy.ext.declarative import declarative_base
-import argparse
-from getpass import getpass
+
 
 
 Base = declarative_base()
@@ -90,10 +89,45 @@ class Matches(Base):
 #     user = User(first_name=first_name, last_name=last_name, password=password)
 #     session.add(user)
 #     session.commit()
-#     print(f"Welcome {first_name} {last_name}.")
+#     print(f"Account created for {first_name} {last_name}")
 
 # def login(session, first_name, last_name, password):
-#     user = session.query(User).filter_by(first_name=first_name, last_name=last_name, password=password)
+#     user = session.query(User).filter_by(first_name=first_name, last_name=last_name).first()
+#     if user and user.password == password:
+#         print(f"Welcome, {first_name} {last_name}!")
+#     else:
+#         print("Invalid credentials")
+
+
+# if __name__ == '_main_':
+
+
+#     parser = argparse.ArgumentParser(description="User management CLI")
+#     subparsers = parser.add_subparsers(dest="command")
+
+#     create_parser = subparsers.add_parser("create", help="Create a new user account")
+#     create_parser.add_argument("first_name", help="User's first name")
+#     create_parser.add_argument("last_name", help="User's last name")
+
+#     login_parser = subparsers.add_parser("login", help="Log in to an existing user account")
+#     login_parser.add_argument("first_name", help="User's first name")
+#     login_parser.add_argument("last_name", help="User's last_name")
+
+#     args = parser.parse_args()
+
+#     if args.command == "create":
+#         password = getpass("Enter a password: ")
+#         confirm_password = getpass("Confirm password: ")
+#         if password == confirm_password:
+#             create_account(session, args.first_name, args.last_name, password)
+#         else:
+#             print("Passwords do not match. Account not created.")
+#     elif args.command == "login":
+#         password = getpass("Enter your password: ")
+#         login(session, args.first_name, args.last_name, password)
+#     else:
+#         parser.print_help()
+
 
 
 
