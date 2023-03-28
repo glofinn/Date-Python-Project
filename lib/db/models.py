@@ -1,6 +1,7 @@
 from sqlalchemy import PrimaryKeyConstraint, Column, String, Integer, ForeignKey, DateTime, Boolean
 from datetime import datetime
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import relationship
 
 
 
@@ -19,7 +20,10 @@ class User(Base):
     id = Column(Integer(), primary_key=True)
     first_name = Column(String(), nullable=False)
     last_name = Column(String(), nullable=False)
-    password = Column(String(), nullable=False) 
+    password = Column(String(), nullable=False)
+     
+
+    attributes = relationship("User_Attributes", back_populates="user")
 
     def __repr__(self):
         return f"User(id={self.id}, " + \
@@ -31,7 +35,7 @@ class User(Base):
 class User_Attributes(Base):
 
 
-    __tablename__ = 'attributes'
+    __tablename__ = 'user_attributes'
     id = Column(Integer, primary_key=True)
     interests = Column(String(), nullable=False)
     age = Column(Integer(), nullable=False)
@@ -39,9 +43,13 @@ class User_Attributes(Base):
     astrology = Column(String(),)
     drinking = Column(Boolean(), default=False)
     smoking = Column(Boolean(), default=False)
-    relationship = Column(String(),)
+    datingpref = Column(String(),)
     passport = Column(String(), nullable=False)
     user_id = Column(Integer(), ForeignKey('users.id'))
+
+
+    user = relationship("User", back_populates="attributes")
+
 
     def __repr__(self):
         return f"Attributes(id={self.id}, " + \
@@ -51,7 +59,7 @@ class User_Attributes(Base):
             f"astrology={self.astrology}, " + \
             f"drinking={self.drinking}, " + \
             f"smoking={self.smoking}, " + \
-            f"relationship={self.relationship}, " + \
+            f"datingpref={self.datingpref}, " + \
             f"passport={self.passport}, " + \
             f"userID={self.user_id}, "
         

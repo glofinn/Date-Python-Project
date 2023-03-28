@@ -185,7 +185,7 @@ attributes_list = [User_Attributes(
         astrology = 'Scorpio',
         drinking = True,
         smoking = True,
-        relationship = 'polyamerous',
+        datingpref = 'polyamerous',
         passport = 'USA',
         user_id= 1,
     ),
@@ -197,7 +197,7 @@ User_Attributes(
         astrology = 'Taurus',
         drinking = True,
         smoking = True,
-        relationship = 'polyamerous',
+        datingpref = 'polyamerous',
         passport = 'United Kingdom',
         user_id= 2,
     ),
@@ -209,7 +209,7 @@ User_Attributes(
         astrology = 'Gemini',
         drinking = True,
         smoking = False,
-        relationship = 'monogamous',
+        datingpref = 'monogamous',
         passport = 'Canada',
         user_id= 3,
     ),
@@ -221,7 +221,7 @@ User_Attributes(
         astrology = 'Virgo',
         drinking = False,
         smoking = True,
-        relationship = 'celibate',
+        datingpref = 'celibate',
         passport = 'Mongolia',
         user_id= 4,
     ),
@@ -233,7 +233,7 @@ User_Attributes(
         astrology = 'Aquarius',
         drinking = False,
         smoking = False,
-        relationship = 'polyamerous',
+        datingpref = 'polyamerous',
         passport = 'Netherlands',
         user_id= 5,
     ),
@@ -245,7 +245,7 @@ User_Attributes(
     astrology='Capricorn',
     drinking = True,
     smoking = True,
-    relationship = 'Polyamerous',
+    datingpref = 'Polyamerous',
     passport = 'USA',
     user_id = 6
 ),
@@ -257,7 +257,7 @@ User_Attributes(
     astrology='Capricorn',
     drinking = True,
     smoking = True,
-    relationship = 'monogamous',
+    datingpref = 'monogamous',
     passport = 'Tanzania',
     user_id = 7
 ),
@@ -269,7 +269,7 @@ User_Attributes(
     astrology='Scorpio',
     drinking = True,
     smoking = True,
-    relationship = 'Polyamerous',
+    datingpref = 'Polyamerous',
     passport = 'Thailand',
     user_id = 8
 ),
@@ -281,7 +281,7 @@ User_Attributes(
     astrology='Cancer',
     drinking = True,
     smoking = True,
-    relationship = 'monogamous',
+    datingpref = 'monogamous',
     passport = 'Turkey',
     user_id = 9
 ),
@@ -293,7 +293,7 @@ User_Attributes(
     astrology='Leo',
     drinking = False,
     smoking = True,
-    relationship = 'monogamous',
+    datingpref = 'monogamous',
     passport = 'India',
     user_id = 10
 ),
@@ -305,7 +305,7 @@ User_Attributes(
     astrology='Virgo',
     drinking = False,
     smoking = False,
-    relationship = 'monogamous',
+    datingpref = 'monogamous',
     passport = 'USA',
     user_id = 11
 ),
@@ -317,7 +317,7 @@ User_Attributes(
     astrology='Aries',
     drinking = True,
     smoking = False,
-    relationship = 'monogamous',
+    datingpref = 'monogamous',
     passport = 'Mexico',
     user_id = 12
 ),
@@ -329,7 +329,7 @@ User_Attributes(
     astrology='Libra',
     drinking = False,
     smoking = False,
-    relationship = 'monogamous',
+    datingpref = 'monogamous',
     passport = 'Singapore',
     user_id = 13
 ),
@@ -341,7 +341,7 @@ User_Attributes(
     astrology='Libra',
     drinking = True,
     smoking = True,
-    relationship = 'monogamous',
+    datingpref = 'monogamous',
     passport = 'Russia',
     user_id = 14
 ),
@@ -353,7 +353,7 @@ User_Attributes(
     astrology='Pisces',
     drinking = True,
     smoking = True,
-    relationship = 'monogamous',
+    datingpref = 'monogamous',
     passport = 'Italy',
     user_id = 15
 ),
@@ -365,7 +365,7 @@ User_Attributes(
     astrology='Sagittarius',
     drinking = True,
     smoking = True,
-    relationship = 'monogamous',
+    datingpref = 'monogamous',
     passport = 'USA',
     user_id = 16
 ),
@@ -377,7 +377,7 @@ User_Attributes(
     astrology='Gemini',
     drinking = True,
     smoking = True,
-    relationship = 'monogamous',
+    datingpref = 'monogamous',
     passport = 'Egypt',
     user_id = 17
 ),
@@ -389,7 +389,7 @@ User_Attributes(
     astrology='Scorpio',
     drinking = False,
     smoking = True,
-    relationship = 'polyamorous',
+    datingpref = 'polyamorous',
     passport = 'Kenya',
     user_id = 18
 ),
@@ -401,7 +401,7 @@ User_Attributes(
     astrology='Pisces',
     drinking = True,
     smoking = True,
-    relationship = 'monogamous',
+    datingpref = 'monogamous',
     passport = 'South Korea',
     user_id = 19
 ),
@@ -413,7 +413,7 @@ User_Attributes(
     astrology='Aries',
     drinking = True,
     smoking = False,
-    relationship = 'monogamous',
+    datingpref = 'monogamous',
     passport = 'Czechia',
     user_id = 20
 ),
@@ -425,7 +425,7 @@ User_Attributes(
     astrology='Cancer',
     drinking = False,
     smoking = False,
-    relationship = 'monogamous',
+    datingpref = 'monogamous',
     passport = 'Poland',
     user_id = 21
 ),
@@ -437,7 +437,7 @@ User_Attributes(
     astrology='Capricorn',
     drinking = True,
     smoking = True,
-    relationship = 'polyamerous',
+    datingpref = 'polyamerous',
     passport = 'Belgium',
     user_id = 22
 ),
@@ -449,7 +449,7 @@ User_Attributes(
     astrology='Virgo',
     drinking = True,
     smoking = False,
-    relationship = 'monogamous',
+    datingpref = 'monogamous',
     passport = 'Vietnam',
     user_id = 23
 ),
@@ -461,7 +461,7 @@ User_Attributes(
     astrology='Leo',
     drinking = True,
     smoking = True,
-    relationship = 'monogamous',
+    datingpref = 'monogamous',
     passport = 'Bosnia',
     user_id = 24
 ),
@@ -473,7 +473,7 @@ User_Attributes(
     astrology='Sagitarrius',
     drinking = False,
     smoking = False,
-    relationship = 'monogamous',
+    datingpref = 'monogamous',
     passport = 'North Korea',
     user_id = 25
 ),
@@ -485,7 +485,7 @@ User_Attributes(
     astrology='Aries',
     drinking = False,
     smoking = False,
-    relationship = 'monogamous',
+    datingpref = 'monogamous',
     passport = 'China',
     user_id = 26
 )]

@@ -12,7 +12,7 @@ models.Base.metadata.create_all(engine)
 Session = sessionmaker(bind=engine)
 session = Session()
 
-
+#CREATE ACCOUNT FUNCTION
 def create_account(session, first_name, last_name, password):
     # delete_data()
     user = session.query(models.User).filter_by(first_name=first_name, last_name=last_name).first()
@@ -24,7 +24,7 @@ def create_account(session, first_name, last_name, password):
         session.commit()
         print(f"Account created for {first_name} {last_name}")
 
-
+#LOGIN FUNCTION
 def login(session, first_name, last_name, password):
     user = session.query(models.User).filter_by(first_name=first_name, last_name=last_name, password=password).first()
     if user:
@@ -32,6 +32,37 @@ def login(session, first_name, last_name, password):
     else:
         print("Invalid credentials. Please try again.")
 
+
+#SET ATTRIBUTES FUNCTION
+def set_attributes(session, first_name, last_name):
+    user = session.query(models.User).filter_by(first_name=first_name, last_name=last_name).first()
+
+    if user:
+        attributes = {
+            "interests": input("Enter your interests (comma-separated): "),
+            "age": int(input("Enter your age: ")),
+            "height": float(input("Enter your height (in cm): ")),
+            "astrological_sign": input("Enter your astrological sign: "),
+            "drinking": input("Do you drink? (yes/no): ").lower() == "yes",
+            "smoking": input("Do you smoke? (yes/no): ").lower() == "yes",
+            "dating_preference": input("What type of relationship are you seeking? (e.g., friendship, dating, etc.): "),
+        }
+
+        for key, value in attributes.items():
+            user_attribute = session.query(models.User_Attributes).filter(models.User_Attributes.user_id == user.id, models.User_Attributes.id == key).first()
+            if user_attribute:
+                user_attribute.value = value
+            else:
+                new_user_attribute = models.User_Attributes(user_id=user.id, key=key, value=value)
+                session.add(new_user_attribute)
+
+        session.commit()
+        print(f"Attributes set for {first_name} {last_name}")
+    else:
+        print("User not found. Please create an account first.")
+
+
+#DELETE ALL DATA FUNCTION
 def delete_data():
     session.query(User).delete()
     session.query(User_Attributes).delete()
@@ -55,17 +86,30 @@ if __name__ == "__main__":
     login_parser.add_argument("last_name", type=str, help="Last Name")
     login_parser.add_argument("password", type=str, help="Password")
 
-    args = parser.parse_args()
+    set_attr_parser = subparsers.add_parser("set_attributes", help="Set user attributes")
+    set_attr_parser.add_argument("first_name", type=str, help="First Name")
+    set_attr_parser.add_argument("last_name", type=str, help="Last Name")
 
-    # Set up the database connection and session
-    
+    args = parser.parse_args()
 
     if args.action == "create":
         create_account(session, args.first_name, args.last_name, args.password)
     elif args.action == "login":
         login(session, args.first_name, args.last_name, args.password)
+    elif args.action == "set_attributes":
+        set_attributes(session, args.first_name, args.last_name)
     else:
-        parser.print_help()
+        print("Invalid command. Please use 'create', 'login', or 'set_attributes'.")
+
+    # Set up the database connection and session
+    
+
+    # if args.action == "create":
+    #     create_account(session, args.first_name, args.last_name, args.password)
+    # elif args.action == "login":
+    #     login(session, args.first_name, args.last_name, args.password)
+    # else:
+    #     parser.print_help()
 
 
 
