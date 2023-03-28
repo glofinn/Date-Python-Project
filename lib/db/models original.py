@@ -1,9 +1,6 @@
 from sqlalchemy import PrimaryKeyConstraint, Column, String, Integer, ForeignKey, DateTime, Boolean
 from datetime import datetime
 from sqlalchemy.ext.declarative import declarative_base
-import argparse
-from getpass import getpass
-
 
 Base = declarative_base()
 
@@ -82,19 +79,6 @@ class Matches(Base):
 
     def __repr__(self):
         return f"Matches"
-    
-
-##FUNCTIONS
-
-# def create_account(session, first_name, last_name, password):
-#     user = User(first_name=first_name, last_name=last_name, password=password)
-#     session.add(user)
-#     session.commit()
-#     print(f"Welcome {first_name} {last_name}.")
-
-# def login(session, first_name, last_name, password):
-#     user = session.query(User).filter_by(first_name=first_name, last_name=last_name, password=password)
-
 
 
 
