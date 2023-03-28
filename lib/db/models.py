@@ -6,6 +6,13 @@ Base = declarative_base()
 
 class User(Base):
 
+    def __init__(self, first_name, last_name, password):
+        self.id = None
+        self.first_name = first_name
+        self.last_name = last_name
+        self.password = password
+
+
     __tablename__ = 'users'
     id = Column(Integer(), primary_key=True)
     first_name = Column(String(), nullable=False)
@@ -79,7 +86,7 @@ class Matches(Base):
 
 
 
-
+# finn = User('Finn', 'Chen', '123')
 
     
     

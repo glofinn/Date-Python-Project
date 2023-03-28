@@ -9,175 +9,174 @@ Session=sessionmaker(bind=engine)
 session = Session()
 
 #USERS CREATED
-
-users_list = [User(
+kat = User(
         first_name='Kat',
         last_name='Dog',
         password='123',
-    ),
+    )
 
-User(
+jamesbond=User(
         first_name='James',
         last_name='Bond',
         password='casino',
-    ),
+    )
 
-User(
+edd=User(
         first_name='Edd',
         last_name='Hi',
         password='butteredtoast',
-    ),
+    )
 
-User(
+eddy=User(
         first_name='Eddy',
         last_name='Bob',
         password='doubleD',
-    ),
+    )
 
-User(
+josh=User(
         first_name='Josh',
         last_name='Hill',
         password='doubleD',
-    ),
+    )
 
-User(
+nick = User(
     first_name='Nick',
     last_name='Brereton',
     password='doubleD'
-),
+)
 
-User(
+craig = User(
     first_name='Craig',
     last_name='Simpson',
     password='bart'
-),
+)
 
-User(
+eric = User(
     first_name='Eric',
     last_name='Cartmen',
     password='ass'
-),
+)
 
-User(
+clyde = User(
     first_name='Clyde',
     last_name='Donovan',
     password='wendy'
-),
+)
 
-User(
+wendy = User(
     first_name='Wendy',
     last_name='Strauss',
     password='pink'
-),
+)
 
-User(
+bebe = User(
     first_name='Bebe',
     last_name='King',
     password='nice'
-),
+)
 
-User(
+julie = User(
     first_name='Julie',
     last_name='Julia',
     password='jules'
-),
+)
 
-User(
+bot = User(
     first_name='Bot',
     last_name='Dot',
     password='Rot'
-),
+)
 
-User(
+ronald = User(
     first_name='Ronald',
     last_name='Raegan',
     password='america'
-),
+)
 
-User(
+gwen = User(
     first_name='Gwen',
     last_name='Stefani',
     password='escape'
-),
+)
 
-User(
+tony = User(
     first_name='Tony',
     last_name='Soprano',
     password='gabagool'
-),
+)
 
-User(
+meadow = User(
     first_name='Meadow',
     last_name='Soprano',
     password='jersey'
-),
+)
 
-User(
+christopher = User(
     first_name='Christopher',
     last_name='K.',
     password='kh2'
-),
+)
 
-User(
+jack = User(
     first_name='Samurai',
     last_name='Jack',
     password='katana'
-),
+)
 
-User(
+beyonce = User(
     first_name='Beyonce',
     last_name='JayZ',
     password='blackalbum'
-),
+)
 
-User(
+barbara = User(
     first_name='Barbara',
     last_name='Bush',
     password='cowboys'
-),
+)
 
-User(
+sally = User(
     first_name='Sally',
     last_name='Sullivan',
     password='pool'
-),
+)
 
-User(
+harold = User(
     first_name='Harold',
     last_name='Sephora',
     password='makeup'
-),
+)
 
-User(
+dusty = User(
     first_name='Dusty',
     last_name='Taint',
     password='sand'
-),
+)
 
-User(
+orlando = User(
     first_name='Orlando',
     last_name='Magic',
     password='bbal'
-),
+)
 
-User(
+jessica = User(
     first_name='Jessica',
     last_name='Rabbit',
     password='carrots'
-),
+)
 
-User(
+nancy = User(
     first_name='Nancy',
     last_name='Pelosi',
     password='crack'
-)]
+)
 
 
 
 
 #USER ATTRIBUTES
 
-attributes_list = [User_Attributes(
+kat_attributes = User_Attributes(
         interests='hotdogs, technology, money',
         age=34,
         height= 164,
@@ -187,9 +186,9 @@ attributes_list = [User_Attributes(
         relationship = 'polyamerous',
         passport = 'USA',
         user_id= 1,
-    ),
+    )
 
-User_Attributes(
+jamesbond_attributes = User_Attributes(
         interests='cars, women, watches',
         age=43,
         height= 183,
@@ -198,10 +197,10 @@ User_Attributes(
         smoking = True,
         relationship = 'polyamerous',
         passport = 'United Kingdom',
-        user_id= 2,
-    ),
+        user_id= 3,
+    )
 
-User_Attributes(
+edd_attributes = User_Attributes(
         interests='hotdogs, technology, money',
         age=20,
         height= 177,
@@ -210,10 +209,10 @@ User_Attributes(
         smoking = False,
         relationship = 'monogamous',
         passport = 'Canada',
-        user_id= 3,
-    ),
+        user_id= 4,
+    )
 
-User_Attributes(
+eddy_attributes = User_Attributes(
         interests='jawbreakers, clothes, women',
         age=18,
         height= 162,
@@ -222,10 +221,10 @@ User_Attributes(
         smoking = True,
         relationship = 'celibate',
         passport = 'Mongolia',
-        user_id= 4,
-    ),
+        user_id= 5,
+    )
 
-User_Attributes(
+josh_attributes = User_Attributes(
         interests='paperplanes, rowing, tacos',
         age=67,
         height= 200,
@@ -234,10 +233,10 @@ User_Attributes(
         smoking = False,
         relationship = 'polyamerous',
         passport = 'Netherlands',
-        user_id= 5,
-    ),
+        user_id= 6,
+    )
 
-User_Attributes(
+nick_attributes = User_Attributes(
     interests = 'celsius, crying, zins',
     age=26,
     height=185,
@@ -246,10 +245,10 @@ User_Attributes(
     smoking = True,
     relationship = 'Polyamerous',
     passport = 'USA',
-    user_id = 6
-),
+    user_id = 7
+)
 
-User_Attributes(
+craig_attributes = User_Attributes(
     interests = 'soft things, crying, death metal',
     age=30,
     height=140,
@@ -258,10 +257,10 @@ User_Attributes(
     smoking = True,
     relationship = 'monogamous',
     passport = 'Tanzania',
-    user_id = 7
-),
+    user_id = 8
+)
 
-User_Attributes(
+eric_attributes = User_Attributes(
     interests = 'hurting people, cheetos, group therapy',
     age=21,
     height=166,
@@ -270,10 +269,10 @@ User_Attributes(
     smoking = True,
     relationship = 'Polyamerous',
     passport = 'Thailand',
-    user_id = 8
-),
+    user_id = 9
+)
 
-User_Attributes(
+clyde_attributes = User_Attributes(
     interests = 'videogames, red wine, boats',
     age=29,
     height=171,
@@ -282,10 +281,10 @@ User_Attributes(
     smoking = True,
     relationship = 'monogamous',
     passport = 'Turkey',
-    user_id = 9
-),
+    user_id = 10
+)
 
-User_Attributes(
+wendy_attributes = User_Attributes(
     interests = 'wendys, ice skating, bubble baths',
     age=22,
     height=192,
@@ -294,10 +293,10 @@ User_Attributes(
     smoking = True,
     relationship = 'monogamous',
     passport = 'India',
-    user_id = 10
-),
+    user_id = 11
+)
 
-User_Attributes(
+bebe_attributes = User_Attributes(
     interests = 'tiktok, blues, donating blood',
     age=27,
     height=210,
@@ -306,10 +305,10 @@ User_Attributes(
     smoking = False,
     relationship = 'monogamous',
     passport = 'USA',
-    user_id = 11
-),
+    user_id = 12
+)
 
-User_Attributes(
+julie_attributes = User_Attributes(
     interests = 'chairs, botany, sneakers',
     age=37,
     height=173,
@@ -318,10 +317,10 @@ User_Attributes(
     smoking = False,
     relationship = 'monogamous',
     passport = 'Mexico',
-    user_id = 12
-),
+    user_id = 13
+)
 
-User_Attributes(
+bot_attributes = User_Attributes(
     interests = 'robots, technology, death metal',
     age=31,
     height=188,
@@ -330,10 +329,10 @@ User_Attributes(
     smoking = False,
     relationship = 'monogamous',
     passport = 'Singapore',
-    user_id = 13
-),
+    user_id = 14
+)
 
-User_Attributes(
+ronald = User_Attributes(
     interests = 'politics, nuclear bombs, milkshakes',
     age=76,
     height=171,
@@ -342,10 +341,10 @@ User_Attributes(
     smoking = True,
     relationship = 'monogamous',
     passport = 'Russia',
-    user_id = 14
-),
+    user_id = 15
+)
 
-User_Attributes(
+tony_attributes = User_Attributes(
     interests = 'gabagool, warm bread, guns',
     age=59,
     height=190,
@@ -354,10 +353,10 @@ User_Attributes(
     smoking = True,
     relationship = 'monogamous',
     passport = 'Italy',
-    user_id = 15
-),
+    user_id = 16
+)
 
-User_Attributes(
+meadow_attributes = User_Attributes(
     interests = 'dolls, skydiving, surfing',
     age=21,
     height=162,
@@ -366,10 +365,10 @@ User_Attributes(
     smoking = True,
     relationship = 'monogamous',
     passport = 'USA',
-    user_id = 16
-),
+    user_id = 17
+)
 
-User_Attributes(
+christopher_attributes = User_Attributes(
     interests = 'gold, beaches, pitbulls',
     age=38,
     height=159,
@@ -378,10 +377,10 @@ User_Attributes(
     smoking = True,
     relationship = 'monogamous',
     passport = 'Egypt',
-    user_id = 17
-),
+    user_id = 18
+)
 
-User_Attributes(
+jack_attributes = User_Attributes(
     interests = 'gabagool, cheetos, boats',
     age=37,
     height=166,
@@ -390,10 +389,10 @@ User_Attributes(
     smoking = True,
     relationship = 'polyamorous',
     passport = 'Kenya',
-    user_id = 18
-),
+    user_id = 19
+)
 
-User_Attributes(
+beyonce_attributes = User_Attributes(
     interests = 'singing, beach, tanning',
     age=41,
     height=169,
@@ -402,10 +401,10 @@ User_Attributes(
     smoking = True,
     relationship = 'monogamous',
     passport = 'South Korea',
-    user_id = 19
-),
+    user_id = 20
+)
 
-User_Attributes(
+barbara_attributes = User_Attributes(
     interests = 'football, red wine, money',
     age=37,
     height=163,
@@ -414,10 +413,10 @@ User_Attributes(
     smoking = False,
     relationship = 'monogamous',
     passport = 'Czechia',
-    user_id = 20
-),
+    user_id = 21
+)
 
-User_Attributes(
+sally_attributes = User_Attributes(
     interests = 'salads, dogs, cleaning',
     age=29,
     height=155,
@@ -426,10 +425,10 @@ User_Attributes(
     smoking = False,
     relationship = 'monogamous',
     passport = 'Poland',
-    user_id = 21
-),
+    user_id = 22
+)
 
-User_Attributes(
+harold_attributes = User_Attributes(
     interests = 'makeup, drag shows, botany',
     age=44,
     height=179,
@@ -438,10 +437,10 @@ User_Attributes(
     smoking = True,
     relationship = 'polyamerous',
     passport = 'Belgium',
-    user_id = 22
-),
+    user_id = 23
+)
 
-User_Attributes(
+dusty_attributes = User_Attributes(
     interests = 'cowboys, guns, money',
     age=66,
     height=163,
@@ -450,10 +449,10 @@ User_Attributes(
     smoking = False,
     relationship = 'monogamous',
     passport = 'Vietnam',
-    user_id = 23
-),
+    user_id = 24
+)
 
-User_Attributes(
+orlando_attributes = User_Attributes(
     interests = 'basketball, wendys, money',
     age=29,
     height=181,
@@ -462,10 +461,10 @@ User_Attributes(
     smoking = True,
     relationship = 'monogamous',
     passport = 'Bosnia',
-    user_id = 24
-),
+    user_id = 25
+)
 
-User_Attributes(
+jessica_attributes = User_Attributes(
     interests = 'carrots, snow, hurting people',
     age=26,
     height=160,
@@ -474,10 +473,10 @@ User_Attributes(
     smoking = False,
     relationship = 'monogamous',
     passport = 'North Korea',
-    user_id = 25
-),
+    user_id = 26
+)
 
-User_Attributes(
+nancy_attributes = User_Attributes(
     interests = 'politics, computers, death metal',
     age=71,
     height=170,
@@ -486,169 +485,169 @@ User_Attributes(
     smoking = False,
     relationship = 'monogamous',
     passport = 'China',
-    user_id = 26
-)]
+    user_id = 27
+)
 
 
 
 # USER LOCATION
 
-location_list = [User_Location(
+kat_location = User_Location(
     zipcode=10002,
     location_pref=4,
     user_id = 1
-),
+)
 
 
-User_Location(
+jamesbond_location = User_Location(
     zipcode=10016,
     location_pref=18,
     user_id=3
-),
+)
 
-User_Location(
+edd_location = User_Location(
     zipcode=10005,
     location_pref=12,
     user_id=4
-),
+)
 
-User_Location(
+eddy_location = User_Location(
     zipcode=10012,
     location_pref=14,
     user_id=5
-),
+)
 
-User_Location(
+josh_location = User_Location(
     zipcode=10030,
     location_pref=15,
     user_id=6
-),
+)
 
-User_Location(
+nick_location = User_Location(
     zipcode=10003,
     location_pref=1,
     user_id=7
-),
+)
 
-User_Location(
+craig_location = User_Location(
     zipcode=11101,
     location_pref=20,
     user_id=8
-),
+)
 
-User_Location(
+eric_location = User_Location(
     zipcode=11354,
     location_pref=20,
     user_id=9
-),
+)
 
-User_Location(
+clyde_location = User_Location(
     zipcode=11420,
     location_pref=20,
     user_id=10
-),
+)
 
-User_Location(
+wendy_location = User_Location(
     zipcode=11377,
     location_pref=20,
     user_id=11
-),
+)
 
-User_Location(
+bebe_location = User_Location(
     zipcode=11692,
     location_pref=20,
     user_id=12
-),
+)
 
-User_Location(
+julie_location = User_Location(
     zipcode=11238,
     location_pref=20,
     user_id=13
-),
+)
 
-User_Location(
+bot_location = User_Location(
     zipcode=11242,
     location_pref=20,
     user_id=14
-),
+)
 
-User_Location(
+ronald_location = User_Location(
     zipcode=11201,
     location_pref=7,
     user_id=15
-),
+)
 
-User_Location(
+tony_location = User_Location(
     zipcode=11203,
     location_pref=4,
     user_id=16
-),
+)
 
-User_Location(
+meadow_location = User_Location(
     zipcode=11204,
     location_pref=5,
     user_id=17
-),
+)
 
-User_Location(
+christopher_location = User_Location(
     zipcode=10152,
     location_pref=9,
     user_id=18
-),
+)
 
-User_Location(
+jack_location = User_Location(
     zipcode=10165,
     location_pref=5,
     user_id=19
-),
+)
 
-User_Location(
+beyonce_location = User_Location(
     zipcode=10278,
     location_pref=3,
     user_id=20
-),
+)
 
-User_Location(
+barbara_location = User_Location(
     zipcode=10460,
     location_pref=11,
     user_id=21
-),
+)
 
-User_Location(
+sally_location = User_Location(
     zipcode=10465,
     location_pref=2,
     user_id=22
-),
+)
 
-User_Location(
+harold_location = User_Location(
     zipcode=10455,
     location_pref=15,
     user_id=23
-),
+)
 
-User_Location(
+dusty_location = User_Location(
     zipcode=11432,
     location_pref=5,
     user_id=24
-),
+)
 
-User_Location(
+orlando_location = User_Location(
     zipcode=11374,
     location_pref=8,
     user_id=25
-),
+)
 
-User_Location(
+jessica_location = User_Location(
     zipcode=11697,
     location_pref=9,
     user_id=26
-),
+)
 
-User_Location(
+nancy_location = User_Location(
     zipcode=10153,
     location_pref=2,
     user_id=27
-)]
+)
     
 def delete_data():
     session.query(User).delete()
@@ -660,9 +659,9 @@ def delete_data():
 if __name__ == '__main__':
     delete_data()
 
-session.bulk_save_objects(users_list)
-session.bulk_save_objects(attributes_list)
-session.bulk_save_objects(location_list)
+session.bulk_save_objects([kat, jamesbond, edd, eddy, josh, nick])
+session.bulk_save_objects([kat_attributes, jamesbond_attributes, edd_attributes, eddy_attributes, josh_attributes, nick_attributes])
+session.bulk_save_objects([kat_location, nick_location])
 session.commit()
 
 
