@@ -170,7 +170,7 @@ User(
 User(
     first_name='Nancy',
     last_name='Pelosi',
-    password='crack'
+    password='hi'
 )]
 
 

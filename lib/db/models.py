@@ -21,6 +21,7 @@ class User(Base):
     first_name = Column(String(), nullable=False)
     last_name = Column(String(), nullable=False)
     password = Column(String(), nullable=False)
+    logged_in = False
      
 
     attributes = relationship("User_Attributes", back_populates="user")
@@ -33,6 +34,19 @@ class User(Base):
 
 
 class User_Attributes(Base):
+
+    def __init__(self,interests,age,height,astrology,drinking,smoking,datingpref,passport,user_id):
+        self.id= None
+        self.interests=interests
+        self.age=age
+        self.height=height
+        self.astrology=astrology
+        self.drinking=drinking
+        self.smoking=smoking
+        self.datingpref=datingpref
+        self.passport=passport
+        self.user_id=user_id
+
 
 
     __tablename__ = 'user_attributes'
