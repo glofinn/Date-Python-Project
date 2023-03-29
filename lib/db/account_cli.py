@@ -79,39 +79,45 @@ def set_location(session, first_name, last_name):
 
 
 #MATCHING FUNCTION
-# def match_me(session, first_name, last_name):
-#     # Retrieve the user's attributes
-#     user = session.query(models.User).filter_by(first_name=first_name, last_name=last_name).first()
-#     user_attributes = session.query(User_Attributes).filter_by(user_id=user.id).first()
+def match_me(session, first_name, last_name,):
+    # Retrieve the user's attributes and user information
+    user = session.query(models.User).filter_by(first_name=first_name, last_name=last_name).first()
+    user_attributes = session.query(User_Attributes).filter_by(user_id=user.id).first()
 
-#     # Iterate through all other users' attributes and find matches
-#     for other_user_attributes in session.query(User_Attributes).filter(User_Attributes.user_id != user.id):
-#         match_score = 0
-#         if user_attributes.interests == other_user_attributes.interests:
-#             match_score += 1
-#         if user_attributes.age == other_user_attributes.age:
-#             match_score += 1
-#         if abs(user_attributes.height - other_user_attributes.height) <= 5:
-#             match_score += 1
-#         if user_attributes.astrology == other_user_attributes.astrology:
-#             match_score += 1
-#         if user_attributes.drinking == other_user_attributes.drinking:
-#             match_score += 1
-#         if user_attributes.smoking == other_user_attributes.smoking:
-#             match_score += 1
-#         if user_attributes.datingpref == other_user_attributes.datingpref:
-#             match_score += 1
-#         if user_attributes.passport == other_user_attributes.passport:
-#             match_score += 1
+    # Iterate through all other users' attributes and find matches
+    for other_user_attributes in session.query(User_Attributes).join(models.User).filter(models.User.id != user.id):
+        match_score = 0
+        if user_attributes.interests == other_user_attributes.interests:
+            match_score += 1
+        if user_attributes.age == other_user_attributes.age:
+            match_score += 1
+        if abs(user_attributes.height - other_user_attributes.height) <= 5:
+            match_score += 1
+        if user_attributes.astrology == other_user_attributes.astrology:
+            match_score += 1
+        if user_attributes.drinking == other_user_attributes.drinking:
+            match_score += 1
+        if user_attributes.smoking == other_user_attributes.smoking:
+            match_score += 1
+        if user_attributes.datingpref == other_user_attributes.datingpref:
+            match_score += 1
+        if user_attributes.passport != other_user_attributes.passport:
+            match_score += 1
 
-#         # Create a new match entry if there is a match
-#         if match_score >= 2:
-#             match = Matches(user_id=user.id, match_user_id=other_user_attributes.user_id)
-#             session.add(match)
-#             session.commit()
-#             print(f"Your match score is {match_score}!")
+        # Create a new match entry if there is a match
+        if match_score >= 2:
+            match = Matches(user1=user.first_name, user2=other_user_attributes.user.first_name, date_matched=datetime.now(), met=False, match_score=match_score)
+            session.add(match)
+            session.commit()
+            print(f"Your match score is {match_score}!")
 
-#     print("Matching complete.")
+            # Adding the match to the other user's matches
+            # other_user_match = Matches(user1=other_user_attributes.user.first_name, user2=user.first_name, date_matched=datetime.now(), met=False)
+            # session.add(other_user_match)
+            # session.commit()
+            # print(f"Match added for {other_user_attributes.user.first_name}.")
+
+    print("Matching complete.")
 
 #DELETE ALL DATA FUNCTION
 def delete_data():

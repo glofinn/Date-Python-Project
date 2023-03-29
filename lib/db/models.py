@@ -101,15 +101,26 @@ class User_Location(Base):
 
 class Matches(Base):
 
+    def __init__(self, user1, user2, date_matched, met, match_score):
+        self.id = None
+        self.user1 = user1
+        self.user2 = user2
+        self.date_matched = date_matched
+        self.met = met
+        self.match_score = match_score
+
     __tablename__ = 'matches'
     match_id = Column(Integer, primary_key=True)
-    user1=Column(Integer())
-    user2=Column(Integer())
+    # user1=Column(Integer, ForeignKey('users.id'), nullable=False)
+    # user2=Column(Integer, ForeignKey('users.id'), nullable=False)
+    user1=Column(String, nullable=False)
+    user2=Column(String, nullable=False)
     date_matched = Column(DateTime, default=datetime.now())
-    Met = Column(Boolean, default=False)
+    met = Column(Boolean, default=False)
+    match_score = Column(Integer, default=0)
 
     def __repr__(self):
-        return f"Matches"
+        return f"Matches(match_id={self.match_id}, user1={self.user1}, user2={self.user2}, date_matched='{self.date_matched}', met={self.met})"
     
 
 ##FUNCTIONS
