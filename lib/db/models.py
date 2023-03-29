@@ -79,6 +79,13 @@ class User_Attributes(Base):
         
 class User_Location(Base):
 
+    def __init__(self, zipcode, location_pref, user_id):
+        self.id = None
+        self.zipcode = zipcode
+        self.location_pref = location_pref
+        self.user_id = user_id
+
+
     __tablename__ = 'location'
     id = Column(Integer, primary_key=True)
     zipcode = Column(Integer(),)

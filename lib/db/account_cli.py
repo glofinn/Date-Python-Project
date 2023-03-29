@@ -6,20 +6,6 @@ from sqlalchemy import create_engine, event
 from sqlalchemy.orm import sessionmaker
 
 
-
-# db_url = "sqlite:///users.db"
-# engine = create_engine(db_url)
-# models.Base.metadata.create_all(engine)
-# Session = sessionmaker(bind=engine)
-# session = Session()
-
-# def _fk_pragma_on_connect(dbapi_con, con_record):
-#     dbapi_con.execute('pragma foreign_keys = ON')
-# event.listen(engine, 'connect', _fk_pragma_on_connect)
-
-
-
-
 #CREATE ACCOUNT FUNCTION
 def create_account(session, first_name, last_name, password):
     # delete_data()
@@ -35,8 +21,6 @@ def create_account(session, first_name, last_name, password):
         session.commit()
         print(f"Account created for {first_name} {last_name}")
 
-    
-
 #LOGIN FUNCTION
 def login(session, first_name, last_name, password):
     first_name = input('Please enter your first name:')
@@ -44,8 +28,8 @@ def login(session, first_name, last_name, password):
     password = input('Please enter your password:')
     user = session.query(models.User).filter_by(first_name=first_name, last_name=last_name, password=password).first()
     if user:
-        print(f"Welcome, {first_name} {last_name} {user.logged_in}!")
         user.logged_in = True
+        print(f"Welcome, {first_name} {last_name} !")
         session.commit()
         return user
 
@@ -53,23 +37,11 @@ def login(session, first_name, last_name, password):
         print("Invalid credentials. Please try again.")
         return None
 
-
-
-
 #SET ATTRIBUTES FUNCTION
 def set_attributes(session, first_name, last_name):
     user = session.query(models.User).filter_by(first_name=first_name, last_name=last_name).first()
 
     if user:
-        # attributes = {
-        #     "interests": input("Enter your interests (comma-separated): "),
-        #     "age": int(input("Enter your age: ")),
-        #     "height": float(input("Enter your height (in cm): ")),
-        #     "astrological_sign": input("Enter your astrological sign: "),
-        #     "drinking": input("Do you drink? (yes/no): ").lower() == "yes",
-        #     "smoking": input("Do you smoke? (yes/no): ").lower() == "yes",
-        #     "dating_preference": input("What type of relationship are you seeking? (e.g., friendship, dating, etc.): "),
-        # }
         interests = input("Enter your interests (comma-separated):")
         age = int(input("Enter your age: "))
         height = float(input("Enter your height (in cm): "))
@@ -78,30 +50,68 @@ def set_attributes(session, first_name, last_name):
         smoking = input("Do you smoke? (yes/no): ").lower() == "yes"
         dating_preference = input("What type of relationship are you seeking? (e.g., friendship, dating, etc.): ")
         passport = input('What type of passport do you have:')
-        user_id = 201
+        user_id = user.id
 
         new_user_attribute = User_Attributes(interests, age, height, astrological_sign, drinking, smoking, dating_preference, passport, user_id)
         session.add(new_user_attribute)
         session.commit()
 
-
-
-
-
-        # for key, value in attributes.items():
-        # user_attribute = session.query(models.User_Attributes).filter(models.User_Attributes.user_id == user.id, models.User_Attributes.id == key).first()
-        # if user_attribute:
-        #         user_attribute.value = value
-        # else:
-        #         # new_user_attribute = models.User_Attributes(user_id=user.id, key=key, value=value)
-        #         new_user_attribute = User_Attributes(attributes.get('interests'),attributes.get('age'), attributes.get('height'), 'Leo', True, True, 'friend', 'usa', 30 )
-        #         session.add(new_user_attribute)
-
-        # session.commit()
         print(f"Attributes set for {first_name} {last_name}")
     else:
         print("User not found. Please create an account first.")
 
+
+def set_location(session, first_name, last_name):
+    user = session.query(models.User).filter_by(first_name=first_name, last_name=last_name).first()
+
+    if user:
+        zipcode = int(input("Enter your zipcode:"))
+        distancepref = int(input("Enter the max match distance(km): "))
+        user_id = user.id
+
+        new_location_pref = User_Location(zipcode, distancepref, user_id)
+        session.add(new_location_pref)
+        session.commit()
+
+        print(f"Location Preferences set for {first_name} {last_name}")
+    else:
+        print("User not found. Please create an account first.")
+
+
+#MATCHING FUNCTION
+# def match_me(session, first_name, last_name):
+#     # Retrieve the user's attributes
+#     user = session.query(models.User).filter_by(first_name=first_name, last_name=last_name).first()
+#     user_attributes = session.query(User_Attributes).filter_by(user_id=user.id).first()
+
+#     # Iterate through all other users' attributes and find matches
+#     for other_user_attributes in session.query(User_Attributes).filter(User_Attributes.user_id != user.id):
+#         match_score = 0
+#         if user_attributes.interests == other_user_attributes.interests:
+#             match_score += 1
+#         if user_attributes.age == other_user_attributes.age:
+#             match_score += 1
+#         if abs(user_attributes.height - other_user_attributes.height) <= 5:
+#             match_score += 1
+#         if user_attributes.astrology == other_user_attributes.astrology:
+#             match_score += 1
+#         if user_attributes.drinking == other_user_attributes.drinking:
+#             match_score += 1
+#         if user_attributes.smoking == other_user_attributes.smoking:
+#             match_score += 1
+#         if user_attributes.datingpref == other_user_attributes.datingpref:
+#             match_score += 1
+#         if user_attributes.passport == other_user_attributes.passport:
+#             match_score += 1
+
+#         # Create a new match entry if there is a match
+#         if match_score >= 2:
+#             match = Matches(user_id=user.id, match_user_id=other_user_attributes.user_id)
+#             session.add(match)
+#             session.commit()
+#             print(f"Your match score is {match_score}!")
+
+#     print("Matching complete.")
 
 #DELETE ALL DATA FUNCTION
 def delete_data():
@@ -142,6 +152,14 @@ if __name__ == "__main__":
     set_attr_parser.add_argument("first_name", type=str, help="First Name")
     set_attr_parser.add_argument("last_name", type=str, help="Last Name")
 
+    set_location_parser = subparsers.add_parser("set_location", help="Set location")
+    set_location_parser.add_argument("first_name", type=str, help="First Name")
+    set_location_parser.add_argument("last_name", type=str, help="Last Name")
+
+    match_me_parser = subparsers.add_parser("match_me", help="Find my matches!")
+    match_me_parser.add_argument("first_name", type=str, help="First Name")
+    match_me_parser.add_argument("last_name", type=str, help="Last Name")
+
     args = parser.parse_args()
 
     if args.action == "create":
@@ -150,8 +168,14 @@ if __name__ == "__main__":
         login(session, args.first_name, args.last_name, args.password)
     elif args.action == "set_attributes":
         set_attributes(session, args.first_name, args.last_name)
+    elif args.action == "set_location":
+        set_location(session, args.first_name, args.last_name)
+    elif args.action == "match_me":
+        match_me(session, args.first_name, args.last_name)
     else:
-        print("Invalid command. Please use 'create', 'login', or 'set_attributes'.")
+        print("Invalid command. Please use 'create', 'login', 'set_attributes', 'set_location', or 'match_me.")
+
+        # Prompt the user to log in or create an account
 
     # Set up the database connection and session
     
