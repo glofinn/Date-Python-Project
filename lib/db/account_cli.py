@@ -4,6 +4,10 @@ import models
 from models import *
 from sqlalchemy import create_engine, event
 from sqlalchemy.orm import sessionmaker
+from geopy.distance import geodesic
+from uszipcode import SearchEngine
+
+
 
 
 #CREATE ACCOUNT FUNCTION
@@ -83,10 +87,14 @@ def match_me(session, first_name, last_name,):
     # Retrieve the user's attributes and user information
     user = session.query(models.User).filter_by(first_name=first_name, last_name=last_name).first()
     user_attributes = session.query(User_Attributes).filter_by(user_id=user.id).first()
+    user_location = session.query(models.User_Location).filter_by(user_id=user.id).first()
+
+    search = SearchEngine()
 
     # Iterate through all other users' attributes and find matches
     for other_user_attributes in session.query(User_Attributes).join(models.User).filter(models.User.id != user.id):
         match_score = 0
+        ##Split()?
         if user_attributes.interests == other_user_attributes.interests:
             match_score += 1
         if user_attributes.age == other_user_attributes.age:
@@ -104,18 +112,23 @@ def match_me(session, first_name, last_name,):
         if user_attributes.passport != other_user_attributes.passport:
             match_score += 1
 
+        # Calculate distance and add score if it's within the user's location preference
+        other_user_location = session.query(User_Location).filter_by(user_id=other_user_attributes.user_id).first()
+        if user_location and other_user_location:
+            user_zip = user_location.zipcode
+            other_user_zip = other_user_location.zipcode
+            user_lat, user_lon = search.by_zipcode(user_zip).lat, search.by_zipcode(user_zip).lng
+            other_user_lat, other_user_lon = search.by_zipcode(other_user_zip).lat, search.by_zipcode(other_user_zip).lng
+            distance = geodesic((user_lat, user_lon), (other_user_lat, other_user_lon)).miles
+            if distance <= user_location.location_pref:
+                match_score += 1
+
         # Create a new match entry if there is a match
         if match_score >= 2:
-            match = Matches(user1=user.first_name, user2=other_user_attributes.user.first_name, date_matched=datetime.now(), met=False, match_score=match_score)
+            match = Matches(user1=user.first_name, user2=other_user_attributes.user.first_name, date_matched=datetime.now(), met=False, match_score=match_score, distance=f"{round(distance,2)} miles")
             session.add(match)
             session.commit()
             print(f"Your match score is {match_score}!")
-
-            # Adding the match to the other user's matches
-            # other_user_match = Matches(user1=other_user_attributes.user.first_name, user2=user.first_name, date_matched=datetime.now(), met=False)
-            # session.add(other_user_match)
-            # session.commit()
-            # print(f"Match added for {other_user_attributes.user.first_name}.")
 
     print("Matching complete.")
 
@@ -165,6 +178,8 @@ if __name__ == "__main__":
     match_me_parser = subparsers.add_parser("match_me", help="Find my matches!")
     match_me_parser.add_argument("first_name", type=str, help="First Name")
     match_me_parser.add_argument("last_name", type=str, help="Last Name")
+
+
 
     args = parser.parse_args()
 

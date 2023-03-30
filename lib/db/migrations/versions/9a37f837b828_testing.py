@@ -1,8 +1,8 @@
-"""testing
+"""Testing
 
-Revision ID: 9f5ce1f90f61
+Revision ID: 9a37f837b828
 Revises: 
-Create Date: 2023-03-29 15:50:55.346188
+Create Date: 2023-03-29 16:37:37.476704
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '9f5ce1f90f61'
+revision = '9a37f837b828'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -25,6 +25,7 @@ def upgrade() -> None:
     sa.Column('date_matched', sa.DateTime(), nullable=True),
     sa.Column('met', sa.Boolean(), nullable=True),
     sa.Column('match_score', sa.Integer(), nullable=True),
+    sa.Column('distance', sa.Integer(), nullable=True),
     sa.PrimaryKeyConstraint('match_id')
     )
     op.create_table('users',
