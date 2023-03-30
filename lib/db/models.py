@@ -116,7 +116,7 @@ class Matches(Base):
     # user2=Column(Integer, ForeignKey('users.id'), nullable=False)
     user1=Column(String, nullable=False)
     user2=Column(String, nullable=False)
-    date_matched = Column(DateTime, default=datetime.now())
+    date_matched = Column(DateTime)
     met = Column(Boolean, default=False)
     match_score = Column(Integer, default=0)
     distance = Column(Integer)
