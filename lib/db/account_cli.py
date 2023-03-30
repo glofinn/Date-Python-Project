@@ -29,7 +29,7 @@ def login(session, first_name, last_name, password):
     user = session.query(models.User).filter_by(first_name=first_name, last_name=last_name, password=password).first()
     if user:
         user.logged_in = True
-        print(f"Welcome, {first_name} {last_name}!")
+        print(f"Welcome, {first_name} {last_name} to Green Card Dating!")
         session.commit()
         return user
 
@@ -137,6 +137,8 @@ def match_me(session, first_name, last_name):
             # distance = pgeocode.GeoDistance('us')
             if distance <= user_location.location_pref:
                 match_score += 1
+            elif distance >= user_location.location_pref:
+                match_score -= 1
 
         # Create a new match entry if there is a match
         if match_score >= 4:
