@@ -180,7 +180,18 @@ if __name__ == "__main__":
     session = Session()
 
     # delete_data()
-parser = argparse.ArgumentParser(description="User Account Creation and Login")
+parser = argparse.ArgumentParser(description="")
+print("""
+
+ __        _______ _     ____ ___  __  __ _____   _____ ___     ____ ____  _____ _____ _   _    ____    _    ____  ____    ____    _  _____ ___ _   _  ____ 
+ \ \      / / ____| |   / ___/ _ \|  \/  | ____| |_   _/ _ \   / ___|  _ \| ____| ____| \ | |  / ___|  / \  |  _ \|  _ \  |  _ \  / \|_   _|_ _| \ | |/ ___|
+  \ \ /\ / /|  _| | |  | |  | | | | |\/| |  _|     | || | | | | |  _| |_) |  _| |  _| |  \| | | |     / _ \ | |_) | | | | | | | |/ _ \ | |  | ||  \| | |  _ 
+   \ V  V / | |___| |__| |__| |_| | |  | | |___    | || |_| | | |_| |  _ <| |___| |___| |\  | | |___ / ___ \|  _ <| |_| | | |_| / ___ \| |  | || |\  | |_| |
+    \_/\_/  |_____|_____\____\___/|_|  |_|_____|   |_| \___/   \____|_| \_\_____|_____|_| \_|  \____/_/   \_\_| \_\____/  |____/_/   \_\_| |___|_| \_|\____|
+                                                                                                                                                            
+
+""")
+
 subparsers = parser.add_subparsers(dest="action")
 
 create_parser = subparsers.add_parser("create", help="Create a new user account")
@@ -193,11 +204,11 @@ login_parser.add_argument("--first-name", type=str, help="First Name")
 login_parser.add_argument("--last-name", type=str, help="Last Name")
 login_parser.add_argument("--password", type=str, help="Password")
 
-set_attr_parser = subparsers.add_parser("set_attributes", help="Set user attributes")
+set_attr_parser = subparsers.add_parser("set_attributes", help="Set your attributes")
 set_attr_parser.add_argument("--first_name", type=str, help="First Name")
 set_attr_parser.add_argument("--last_name", type=str, help="Last Name")
 
-set_location_parser = subparsers.add_parser("set_location", help="Set location")
+set_location_parser = subparsers.add_parser("set_location", help="Set your location")
 set_location_parser.add_argument("--first_name", type=str, help="First Name")
 set_location_parser.add_argument("--last_name", type=str, help="Last Name")
 
